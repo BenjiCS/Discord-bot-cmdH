@@ -10,8 +10,6 @@ const getAllFiles = (path, foldersOnly = false) => {
     const fileName = `${path}/${file.name}`
 
     const normalizedPath = fileName.replace(/\\/g, '/');
-  
-    console.log(normalizedPath)
 
     if (file.isDirectory()) {
       if (foldersOnly) {

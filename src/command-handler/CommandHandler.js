@@ -10,11 +10,10 @@ const DisabledCommands = require("./DisabledCommands");
 const PrefixHandler = require("./PrefixHandler");
 
 class CommandHandler {
-
   // <commandName, instance of the Command class>
   _commands = new Map();
   _validations = this.getValidations(
-    path.join(__dirname, "validations", "/runtime")
+    path.join(__dirname, "validations", "runtime")
   );
   _channelCommands = new ChannelCommands();
   _customCommands = new CustomCommands(this);
