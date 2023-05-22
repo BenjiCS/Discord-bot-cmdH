@@ -1,4 +1,5 @@
 const fs = require('fs')
+const pathModule = require('path');
 
 const getAllFiles = (path, foldersOnly = false) => {
   const files = fs.readdirSync(path, {
@@ -7,20 +8,22 @@ const getAllFiles = (path, foldersOnly = false) => {
   let filesFound = []
 
   for (const file of files) {
-    const fileName = `${path}/${file.name}`
+    const fileName = `${path}\\${file.name}`
 
   console.log(fileName)
 
+  const normalizedPath = pathModule.normalize(fileName).replace(/\\/g, '/');
+
     if (file.isDirectory()) {
       if (foldersOnly) {
-        filesFound.push(fileName)
+        filesFound.push(normalizedPath)
       } else {
-        filesFound = [...filesFound, ...getAllFiles(fileName)]
+        filesFound = [...filesFound, ...getAllFiles(normalizedPath)]
       }
       continue
     }
 
-    filesFound.push(fileName)
+    filesFound.push(normalizedPath)
   }
 
   return filesFound
