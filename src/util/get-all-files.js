@@ -8,7 +8,7 @@ const getAllFiles = (path, foldersOnly = false) => {
   let filesFound = []
 
   for (const file of files) {
-    const fileName = `${path}\\${file.name}`
+    const fileName = `${path}/${file.name}`
 
   console.log(fileName)
 
