@@ -7,20 +7,18 @@ const getAllFiles = (path, foldersOnly = false) => {
   let filesFound = []
 
   for (const file of files) {
-    const fileName = `${path}/${file.name}`
-
-    const normalizedPath = fileName.replace(/\\/g, '/');
+    const fileName = `${path}\\${file.name}`
 
     if (file.isDirectory()) {
       if (foldersOnly) {
-        filesFound.push(normalizedPath)
+        filesFound.push(fileName)
       } else {
-        filesFound = [...filesFound, ...getAllFiles(normalizedPath)]
+        filesFound = [...filesFound, ...getAllFiles(fileName)]
       }
       continue
     }
 
-    filesFound.push(normalizedPath)
+    filesFound.push(fileName)
   }
 
   return filesFound

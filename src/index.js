@@ -85,6 +85,10 @@ class Main {
       keepAlive: true,
     })
   }
+
+  get connection() {
+    return mongoose.connection
+  }
 }
 
 module.exports = Main
